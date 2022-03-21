@@ -2,7 +2,7 @@ export interface Pipeline {
   [key: string]: PipelineOptions
 }
 
-export class AggregateBuild {
+export class AggregateBuilder {
   pipeline: Pipeline[]
 
   constructor () {
@@ -140,8 +140,8 @@ export class AggregateBuild {
     return this
   }
 
-  concat (pipeline: AggregateBuild | Pipeline[]): this {
-    if (pipeline instanceof AggregateBuild) {
+  concat (pipeline: AggregateBuilder | Pipeline[]): this {
+    if (pipeline instanceof AggregateBuilder) {
       pipeline = pipeline.pipeline
     }
     this.pipeline = this.pipeline.concat(pipeline)
@@ -153,7 +153,7 @@ export class AggregateBuild {
   }
 }
 
-export default AggregateBuild
+export default AggregateBuilder
 
 export type PipelineOptions =
   AddFieldsPipeline |

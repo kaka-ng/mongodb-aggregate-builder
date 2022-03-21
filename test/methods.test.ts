@@ -1,10 +1,10 @@
 import t from 'tap'
-import AggregateBuild, { MergePipeline, SortPipeline } from '../lib'
+import { AggregateBuilder, MergePipeline, SortPipeline } from '../lib'
 
 t.plan(1)
 t.test('methods', function (t) {
   t.plan(35)
-  const builder = new AggregateBuild()
+  const builder = new AggregateBuilder()
 
   t.test('addFields', function (t) {
     t.plan(1)
@@ -314,10 +314,10 @@ t.test('methods', function (t) {
     t.has(builder.pipeline, /$count/)
   })
 
-  t.test('concat - AggregateBuild', function (t) {
+  t.test('concat - AggregateBuilder', function (t) {
     t.plan(1)
-    const opt = new AggregateBuild()
-    opt.count('AggregateBuild')
+    const opt = new AggregateBuilder()
+    opt.count('AggregateBuilder')
     builder.concat(opt)
     t.has(builder.pipeline, /$count/)
   })
