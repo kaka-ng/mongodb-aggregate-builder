@@ -1,6 +1,4 @@
-export interface Pipeline {
-  [key: string]: PipelineOptions
-}
+export type Pipeline = Record<string, PipelineOptions>
 
 export class AggregateBuilder {
   pipeline: Pipeline[]
@@ -187,41 +185,27 @@ export type PipelineOptions =
   UnsetPipeline |
   UnwindPipeline
 
-export interface AddFieldsPipeline {
-  [key: string]: unknown
-}
+export type AddFieldsPipeline = Record<string, unknown>
 
 export interface BucketPipeline {
-  groupBy: string | {
-    [key: string]: unknown
-  }
+  groupBy: string | Record<string, unknown>
   boundaries: unknown[]
   default: string
-  output?: {
-    [key: string]: unknown
-  }
+  output?: Record<string, unknown>
 }
 
 export interface BucketAutoPipeline {
-  groupBy: string | {
-    [key: string]: unknown
-  }
+  groupBy: string | Record<string, unknown>
   buckets: number
-  output?: {
-    [key: string]: unknown
-  }
+  output?: Record<string, unknown>
   granularity?: 'R5' | 'R10' | 'R20' | 'R40' | 'R80' | '1-2-5' | 'E6' | 'E12' | 'E24' | 'E48' | 'E96' | 'E192' | 'POWERSOF2'
 }
 
 export interface CollStatsPipeline {
   latencyStats?: { histograms: boolean }
   storageStats?: { scale: number }
-  count?: {
-    [key: string]: unknown
-  }
-  queryExecStats?: {
-    [key: string]: unknown
-  }
+  count?: Record<string, unknown>
+  queryExecStats?: Record<string, unknown>
 }
 
 export type CountPipeline = string
@@ -235,18 +219,14 @@ export interface CurrentOpPipeline {
   backtrace?: boolean
 }
 
-export interface FacetPipeline {
-  [key: string]: unknown[]
-}
+export type FacetPipeline = Record<string, unknown[]>
 
 export interface GeoNearPipeline {
   near: unknown
   distanceField: string
   spherical?: boolean
   maxDistance?: number
-  query?: {
-    [key: string]: unknown
-  }
+  query?: Record<string, unknown>
   distanceMultiplier?: number
   includeLocs?: string
   uniqueDocs?: boolean
@@ -262,9 +242,7 @@ export interface GraphLookupPipeline {
   as: string
   maxDepth?: number
   depthField?: string
-  restrictSearchWithMatch?: {
-    [key: string]: unknown
-  }
+  restrictSearchWithMatch?: Record<string, unknown>
 }
 
 export interface GroupPipeline {
@@ -272,16 +250,15 @@ export interface GroupPipeline {
   [key: string]: unknown
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-export type IndexStatsPipeline = {}
+export type IndexStatsPipeline = Record<string, unknown>
 
 export type LimitPipeline = number
 
-export type ListLocalSessionsPipeline = {} | {
+export type ListLocalSessionsPipeline = Record<string, unknown> | {
   users: Array<{ user: string, db: string }>
 } | { allUsers: true }
 
-export type ListSessionsPipeline = {} | {
+export type ListSessionsPipeline = Record<string, unknown> | {
   users: Array<{ user: string, db: string }>
 } | { allUsers: true }
 
@@ -294,17 +271,13 @@ export interface LookupPipeline {
   as: string
 }
 
-export interface MatchPipeline {
-  [key: string]: unknown
-}
+export type MatchPipeline = Record<string, unknown>
 
 export interface MergePipeline {
   into: string | OutPipeline
   on?: string | string[]
   whenMatched?: 'replace' | 'keepExisting' | 'merge' | 'fail'
-  let?: {
-    [key: string]: unknown
-  }
+  let?: Record<string, unknown>
   whenNotMatched?: 'insert' | 'discard' | 'fail'
 }
 
@@ -318,37 +291,25 @@ export interface ProjectPipeline {
   [key: string]: 0 | 1 | boolean | unknown | undefined
 }
 
-export interface RedactPipeline {
-  [key: string]: unknown
-}
+export type RedactPipeline = Record<string, unknown>
 
 export interface ReplaceRootPipeline {
-  newRoot: {
-    [key: string]: unknown
-  }
+  newRoot: Record<string, unknown>
 }
 
-export type ReplaceWithPipeline = string | {
-  [key: string]: unknown
-}
+export type ReplaceWithPipeline = string | Record<string, unknown>
 
 export interface SamplePipeline {
   size: number
 }
 
-export interface SetPipeline {
-  [key: string]: unknown
-}
+export type SetPipeline = Record<string, unknown>
 
 export type SkipPipeline = number
 
-export interface SortPipeline {
-  [key: string]: 1 | -1 | { $meta: 'textScore' }
-}
+export type SortPipeline = Record<string, 1 | -1 | { $meta: 'textScore' }>
 
-export type SortByCountPipeline = string | {
-  [key: string]: unknown
-}
+export type SortByCountPipeline = string | Record<string, unknown>
 
 export interface UnionWithPipeline {
   coll: string

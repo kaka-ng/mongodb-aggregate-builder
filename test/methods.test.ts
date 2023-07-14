@@ -1,5 +1,5 @@
 import t from 'tap'
-import { AggregateBuilder, MergePipeline, SortPipeline } from '../lib'
+import { AggregateBuilder, type MergePipeline, type SortPipeline } from '../lib'
 
 t.plan(1)
 t.test('methods', function (t) {
